@@ -1,0 +1,14 @@
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.exe
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.deps.json
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.runtimeconfig.json
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.runtimeconfig.dev.json
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.dll
+D:\афонин c#\lab_1\lab_1\bin\Debug\netcoreapp3.1\lab_1.pdb
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.csproj.AssemblyReference.cache
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.GeneratedMSBuildEditorConfig.editorconfig
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.AssemblyInfoInputs.cache
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.AssemblyInfo.cs
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.csproj.CoreCompileInputs.cache
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.dll
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.pdb
+D:\афонин c#\lab_1\lab_1\obj\Debug\netcoreapp3.1\lab_1.genruntimeconfig.cache
