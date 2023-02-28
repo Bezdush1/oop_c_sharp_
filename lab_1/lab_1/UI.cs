@@ -18,7 +18,8 @@ namespace lab_1
 
         public static void mainMenu()
         {
-            Console.WriteLine("Введите: \n 1 - Создать обьект\n 2 - Изменить обьект\n 3 - Просмотреть список обьектов\n 4 - Вывести всю информацию об обьекте\n 5 - Завершить работу");
+            Console.WriteLine("Введите: \n 1 - Создать обьект\n 2 - Изменить обьект\n 3 - Просмотреть список обьектов\n 4 - Вывести всю информацию об обьекте\n" +
+                " 5 - Вывести одно поле обьекта\n6 - Завершить работу");
             string? option = Console.ReadLine();
             switch (option)
             {
@@ -35,6 +36,9 @@ namespace lab_1
                     showAllFieldId(humans);
                     break;
                 case "5":
+                    printOneField(humans);
+                    break;
+                case "6":
                     Console.WriteLine("Завершение работ. Повторно нажмите enter");
                     break;
                 default:
@@ -416,24 +420,123 @@ namespace lab_1
 
         public static void showAllFieldId(List<Human> humans)
         {
-            Console.WriteLine("Введите ID:");
-            string thisId = Console.ReadLine();
-            bool isFindID = false;
-            foreach (Human human in humans)
+            Console.WriteLine("У вас есть ID?");
+            Console.WriteLine("1 - да\n2 - нет");
+            string firstKey = Console.ReadLine();
+            switch (firstKey)
             {
-                if (human.humanID == thisId)
-                {
-                    isFindID = true;
-                    Console.WriteLine(human);
+                case "1":
+                    Console.WriteLine("Введите ID:");
+                    string thisId = Console.ReadLine();
+                    bool isFindID = false;
+                    foreach (Human human in humans)
+                    {
+                        if (human.humanID == thisId)
+                        {
+                            isFindID = true;
+                            Console.WriteLine(human);
+                            mainMenu();
+                            break;
+                        }
+                    }
+                    if (!isFindID)
+                    {
+                        Console.WriteLine("Нет человека с таким ID. Введите ID заново");
+                        showAllFieldId(humans);
+                    }
+                    break;
+                case "2":
+                    Console.WriteLine("Создайте обьект");
                     mainMenu();
                     break;
-                }
+                default:
+                    Console.WriteLine("Неизвестное поле!");
+                    return;
             }
-            if (!isFindID)
+        }
+
+        public static void printOneField(List<Human> humans)
+        {
+            Console.WriteLine("У вас есть ID?");
+            Console.WriteLine("1 - да\n2 - нет");
+            string firstKey = Console.ReadLine();
+            switch (firstKey)
             {
-                Console.WriteLine("Нет человека с таким ID. Введите ID заново");
-                showAllFieldId(humans);
+                case "1":
+                    Console.WriteLine("Введите ID:");
+                    string thisId = Console.ReadLine();
+                    bool isFindID = false;
+                    foreach (Human human in humans)
+                    {
+                        if (human.humanID == thisId)
+                        {
+                            isFindID = true;
+                            chooseOneField(human);
+                            break;
+                        }
+                    }
+                    if (!isFindID)
+                    {
+                        Console.WriteLine("Нет человека с таким ID. Введите ID заново");
+                        showAllFieldId(humans);
+                    }
+                    break;
+                case "2":
+                    Console.WriteLine("Создайте обьект");
+                    mainMenu();
+                    break;
+                default:
+                    Console.WriteLine("Неизвестное поле!");
+                    return;
             }
+        }
+        public static void chooseOneField(Human human) 
+        { 
+            Console.WriteLine("Выберите что хотите посмотреть:");
+            Console.WriteLine("Введите: \n" +
+                "1 - Возраст\n" +
+                "2 - Вес\n" +
+                "3 - Имя\n" +
+                "4 - Фамилию\n" +
+                "5 - Количество детей\n" +
+                "6 - Место жительства\n" +
+                "7 - Рост\n" +
+                "8 - Id\n"+
+                "9 - Вернуться на главную\n");
+            string ? variant = Console.ReadLine();
+            switch (variant)
+            {
+                case "1":
+                    Console.WriteLine(human.age);
+                    break;
+                case "2":
+                    Console.WriteLine(human.weight);
+                    break;
+                case "3":
+                    Console.WriteLine(human.name);
+                    break;
+                case "4":
+                    Console.WriteLine(human.secondName);
+                    break;
+                case "5":
+                    Console.WriteLine(human.numberOfChildren);
+                    break;
+                case "6":
+                    Console.WriteLine(human.country);
+                    break;
+                case "7":
+                    Console.WriteLine(human.height);
+                    break;
+                case "8":
+                    Console.WriteLine(human.humanID);
+                    break;
+                case "9":
+                    mainMenu();
+                    break;
+                default:
+                    Console.WriteLine("Неизвестное поле!");
+                    return;
+            }    
         }
     }
 }
