@@ -8,18 +8,19 @@ namespace lab_1
         {
             try
             {
-                Console.WriteLine("Лабораторная работа №1" + "\n" + "Бобков и Жигалов - бригада №13" + "\n" +
-            "Вариант задания: Человек" + "\n" + "Задание:Реализовать класс, содержащий не менее 7 полей с различными \n" +
-            "типами данных:" + " •\tcтрока,•\tцелое, •\tвещественное.\n ");
-
-                Human people = new Human(17, 78.6, "dsdf", "sdsa", 3, "sadasd", 0.9);
+                UI.bannerInfo();
+                Human people = new Human(17, 78.6, "Александр", "Щипанов", 3, "Москва", 0.9);
                 Console.WriteLine(people);
 
                 people.PrintInHex("age");
-                people.TryChangeProperty("name", "bigBoy");
+                people.TryChangeProperty("name", "Руслан");
                 people.PrintProperty("name");
-
-                people.TryChangeProperty("height", 1);
+                people.TryChangeProperty("age", 25);
+                people.TryChangeProperty("height", 2);
+                people.TryChangeProperty("weight", -2);
+                people.TryChangeProperty("secondName", "Хабибулин");
+                people.TryChangeProperty("numberOfChildren", -2);
+                people.TryChangeProperty("country", "Пенза");
                 Console.WriteLine(people);
             }
             catch (Exception ex)

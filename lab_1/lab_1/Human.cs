@@ -108,21 +108,25 @@ namespace lab_1
             {
                 if ((propertyName == "age") && (((Int32)value < 1) || ((Int32)value > 100)))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение возраста \n Допустимый возраст лежит в диапозоне от 1 до 100");
                     return false;
                 }
                 if ((propertyName == "numberOfChildren") && ((Int32)value < 0) )
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение детей \n Допустимый значение не должно быть меньше 0");
                     return false;
                 }
                 if ((propertyName == "weight") && (((Int32)value < 0) || ((Int32)value > 200)))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение веса \n Допустимый значение лежит в диапозоне от 0.1 до 199");
                     return false;
                 }
                 if ((propertyName == "height") && (((Int32)value < 0) || ((Int32)value > 3)))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение роста \n Допустимый значение лежит в диапозоне от 0.1 до 2.9");
                     return false;
                 }
@@ -131,11 +135,13 @@ namespace lab_1
             {
                 if ((propertyName == "weight") && (((Double)value < 0) || ((Double)value > 200)))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение веса \n Допустимый значение лежит в диапозоне от 0.1 до 199");
                     return false;
                 }
                 if ((propertyName == "height") && (((Double)value < 0) || ((Double)value > 3)))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно значение роста \n Допустимый значение лежит в диапозоне от 0.1 до 2.9");
                     return false;
                 }
@@ -144,6 +150,7 @@ namespace lab_1
             {
                 if (propertyName == "age" || propertyName == "height" || propertyName == "weight" || propertyName == "numberOfChildren")
                 {
+                    Console.WriteLine();
                     Console.WriteLine("неверно указано значение");
                     return false;
                 }
@@ -168,10 +175,12 @@ namespace lab_1
             var property = typeof(Human).GetProperty(propertyName);
             if (property != null)
             {
+                Console.WriteLine();
                 Console.WriteLine($"{propertyName}: {property.GetValue(this)}");
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("Свойство не найдено");
             }
         }
@@ -185,16 +194,19 @@ namespace lab_1
             var property = typeof(Human).GetProperty(propertyName);
             if (property == null)
             {
+                Console.WriteLine();
                 Console.WriteLine("Свойство не найдено");
                 return;
             }
             try
             {
                 ulong value = Convert.ToUInt64(property.GetValue(this));
+                Console.WriteLine();
                 Console.WriteLine(value.ToString("X"));
             }
             catch (FormatException)
             {
+                Console.WriteLine();
                 Console.WriteLine("Данное поле не является числом");
             }
         }
