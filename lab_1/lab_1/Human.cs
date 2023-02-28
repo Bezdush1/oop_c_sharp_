@@ -10,13 +10,13 @@ namespace lab_1
     /// </summary>
     class Human
     {
-        public int Age { get; set; } //возраст   
-        public double Weight { get; set; }  //вес
-        public string Name { get; set; }  //имя
-        public string SecondName { get; set; }  //фамилия
-        public int NumberOfChildren { get; set; }  //год рождения
-        public string Country { get; set; }  //город проживания
-        public double Height { get; set; }  //рост
+        public int age { get; set; } //возраст   
+        public double weight { get; set; }  //вес
+        public string name { get; set; }  //имя
+        public string secondName { get; set; }  //фамилия
+        public int numberOfChildren { get; set; }  //год рождения
+        public string country { get; set; }  //город проживания
+        public double height { get; set; }  //рост
 
         /// <summary>
         /// Конструктор без параметров
@@ -41,27 +41,27 @@ namespace lab_1
             if (age < 1 || age > 100)
                 throw new Exception(" Неверный возраст человека \n Допустимый возраст лежит в диапозоне от 1 до 100");
             else
-            Age = age;
+            this.age = age;
 
             if (weight < 1 || weight > 200)
                 throw new Exception(" Неверный вес человека \n Допустимый вес лежит в диапозоне от 1 до 200");
             else
-                Weight = weight;
+                this.weight = weight;
 
-            Name = name;
-            SecondName = secondName;
+            this.name = name;
+            this.secondName = secondName;
 
             if (numberOfChildren < 0)
                 throw new Exception(" Неверно указано количество детей \n Допустимое значение должно быть не отрицательным");
             else
-            NumberOfChildren = numberOfChildren;
+            this.numberOfChildren = numberOfChildren;
 
-            Country = country;
+            this.country = country;
 
             if (height < 0.09 || height > 3)
                 throw new Exception(" Неверный рост человека \n Допустимый рост лежит в диапозоне от 0.1 м до 3 м");
             else
-            Height = height;
+            this.height = height;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace lab_1
         /// <param name="name">Имя человека</param>
         public Human(string name)
         {
-            Name = name;
+            this.name = name;
         }
 
         /// <summary>
@@ -80,22 +80,14 @@ namespace lab_1
         /// /// <param name="secondName">Имя человека</param>
         public Human(string name,string secondName)
         {
-            Name = name;
-            SecondName = secondName;
-        }
-
-        public void Print()
-        {
-            Console.WriteLine();
-            string s = null;
-            s = Convert.ToString(Age, 16);
-            Console.WriteLine("вывод в 16-системе: " + s);
+            this.name = name;
+            this.secondName = secondName;
         }
 
         public override string ToString()
         {
-           return ($" Возраст: {Age} \n Вес: {Weight}  кг\n Имя: {Name} \n Фамилия: {SecondName} \n Количество детей: {NumberOfChildren}\n " +
-                $"Страна проживания: {Country}\n Рост {Height} м");
+           return ($" Возраст: {age} \n Вес: {weight}  кг\n Имя: {name} \n Фамилия: {secondName} \n Количество детей: {numberOfChildren}\n " +
+                $"Страна проживания: {country}\n Рост {height} м");
         }
 
         /// <summary>
@@ -111,15 +103,60 @@ namespace lab_1
             {
                 return false;
             }
-            try
+            Type t = value.GetType();
+            if (t.Equals(typeof(int)))
             {
-                property.SetValue(this, value);
-                return true;
+                if ((propertyName == "age") && (((Int32)value < 1) || ((Int32)value > 100)))
+                {
+                    Console.WriteLine("неверно значение возраста \n Допустимый возраст лежит в диапозоне от 1 до 100");
+                    return false;
+                }
+                if ((propertyName == "numberOfChildren") && ((Int32)value < 0) )
+                {
+                    Console.WriteLine("неверно значение детей \n Допустимый значение не должно быть меньше 0");
+                    return false;
+                }
+                if ((propertyName == "weight") && (((Int32)value < 0) || ((Int32)value > 200)))
+                {
+                    Console.WriteLine("неверно значение веса \n Допустимый значение лежит в диапозоне от 0.1 до 199");
+                    return false;
+                }
+                if ((propertyName == "height") && (((Int32)value < 0) || ((Int32)value > 3)))
+                {
+                    Console.WriteLine("неверно значение роста \n Допустимый значение лежит в диапозоне от 0.1 до 2.9");
+                    return false;
+                }
             }
-            catch (Exception)
+            else if (t.Equals(typeof(double)))
             {
-                return false;
+                if ((propertyName == "weight") && (((Double)value < 0) || ((Double)value > 200)))
+                {
+                    Console.WriteLine("неверно значение веса \n Допустимый значение лежит в диапозоне от 0.1 до 199");
+                    return false;
+                }
+                if ((propertyName == "height") && (((Double)value < 0) || ((Double)value > 3)))
+                {
+                    Console.WriteLine("неверно значение роста \n Допустимый значение лежит в диапозоне от 0.1 до 2.9");
+                    return false;
+                }
             }
+            else if (t.Equals(typeof(string)))
+            {
+                if (propertyName == "age" || propertyName == "height" || propertyName == "weight" || propertyName == "numberOfChildren")
+                {
+                    Console.WriteLine("неверно указано значение");
+                    return false;
+                }
+            }
+                try
+                {
+                    property.SetValue(this, value);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
         }
 
         /// <summary>

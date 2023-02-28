@@ -8,23 +8,19 @@ namespace lab_1
         {
             try
             {
-                Banner.PrintInfo();
-                //Human max1 = new Human("maximus");
-                //Console.WriteLine(max1);
-
-                //Human max2 = new Human("maximus","razmaximus");
-                //Console.WriteLine(max2);
-
-                //Human max = new Human();
-                //Console.WriteLine(max);
+                Console.WriteLine("Лабораторная работа №1" + "\n" + "Бобков и Жигалов - бригада №13" + "\n" +
+            "Вариант задания: Человек" + "\n" + "Задание:Реализовать класс, содержащий не менее 7 полей с различными \n" +
+            "типами данных:" + " •\tcтрока,•\tцелое, •\tвещественное.\n ");
 
                 Human people = new Human(17, 78.6, "dsdf", "sdsa", 3, "sadasd", 0.9);
                 Console.WriteLine(people);
-                people.Print();
 
-                people.PrintInHex("Name");
-                people.TryChangeProperty("Name", "bigBoy");
-                people.PrintProperty("Name");
+                people.PrintInHex("age");
+                people.TryChangeProperty("name", "bigBoy");
+                people.PrintProperty("name");
+
+                people.TryChangeProperty("height", 1);
+                Console.WriteLine(people);
             }
             catch (Exception ex)
             {
