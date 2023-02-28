@@ -129,24 +129,41 @@ namespace lab_1
 
         public static void changeObject()
         {
-            Console.WriteLine("Введите ID:");
-            string thisId = Console.ReadLine();
-            bool isFindID = false;
-            foreach (Human human in humans)
+            Console.WriteLine("У вас есть ID?");
+            Console.WriteLine("1 - да\n2 - нет");
+            string Key = Console.ReadLine();
+            switch (Key)
             {
-                if (human.humanID == thisId)
-                {
-                    isFindID = true;
-                    changeObjectField(human);
+                case "1":
+                    Console.WriteLine("Введите ID:");
+                    string thisId = Console.ReadLine();
+                    bool isFindID = false;
+                    foreach (Human human in humans)
+                    {
+                        if (human.humanID == thisId)
+                        {
+                            isFindID = true;
+                            changeObjectField(human);
+                            break;
+                        }
+                    }
+                    if (!isFindID)
+                    {
+                        Console.WriteLine("Нет человека с таким ID. Введите ID заново");
+                        changeObject();
+                    }
                     break;
-                }
-            }
-            if (!isFindID)
-            {
-                Console.WriteLine("Нет человека с таким ID. Введите ID заново");
-                changeObject();
+                case "2":
+                    Console.WriteLine("Создайте обьект");
+                    mainMenu();
+                    break;
+                default:
+                    Console.WriteLine("Неизвестное поле!");
+                    changeObject();
+                    break;
             }
         }
+
         public static void changeObjectField(Human human)
         {
             Console.WriteLine("Выберите что хотите изменить:");
