@@ -19,7 +19,7 @@ namespace lab_1
         public static void mainMenu()
         {
             Console.WriteLine("Введите: \n 1 - Создать обьект\n 2 - Изменить обьект\n 3 - Просмотреть список обьектов\n 4 - Вывести всю информацию об обьекте\n" +
-                " 5 - Вывести одно поле обьекта\n6 - Завершить работу");
+                " 5 - Вывести одно поле обьекта\n 6 - Завершить работу");
             string? option = Console.ReadLine();
             switch (option)
             {
@@ -48,7 +48,7 @@ namespace lab_1
             }
         }
 
-        public static void createNewObject() 
+        public static void createNewObject()
         {
             Human human = null;
             Console.WriteLine("Выберите что хотите создать:");
@@ -56,7 +56,7 @@ namespace lab_1
                 "1 - Создать пустой обьект\n" +
                 "2 - создать обьект с именем\n" +
                 "3 - создать обьект с именем и фамилией\n" +
-                "4 - создать обьект со всеми параметрами\n"+
+                "4 - создать обьект со всеми параметрами\n" +
                 "5 - отменить создание и выйти в начальное меню выбора");
             string? optionCreate = Console.ReadLine();
             switch (optionCreate)
@@ -89,53 +89,12 @@ namespace lab_1
 
                 case "4":
                     Console.WriteLine("Введите следующие значение:");
-                    bool flagAge = true;
-                    int newAge=0;
-                    while (flagAge)
-                    {
-                        Console.Write("Необходимо указать возраст человека (полное количество лет): ");
-                        object newAgeHuman = Console.ReadLine();
-                        try
-                        {
-                            newAge = Convert.ToInt32(newAgeHuman);
-                            if (newAge<1 || newAge > 150)
-                            {
-                                Console.WriteLine("Введите корректный возраст (от 1 до 150)");
-                            }
-                            else
-                            {
-                                flagAge = false;
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
 
-                    bool flagWeight = true;
-                    double newWeight = 0;
-                    while (flagWeight)
-                    {
-                        Console.Write("Необходимо указать вес человека (кг.гр): ");
-                        object newWeightHuman = Console.ReadLine();
-                        try
-                        {
-                            newWeight = Convert.ToDouble(newWeightHuman);
-                            if (newWeight < 1 || newWeight > 200)
-                            {
-                                Console.WriteLine("Введите корректный вес (от 1 до 200)");
-                            }
-                            else
-                            {
-                                flagWeight = false;
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать возраст человека (полное количество лет): ");
+                    int newAge=examinationInt(1,150);
+
+                    Console.Write("Необходимо указать вес человека (кг.гр): ");
+                    double newWeight = examinationDouble(1, 200);
 
                     Console.Write("Необходимо указать имя человека: ");
                     string newName = Console.ReadLine();
@@ -143,58 +102,16 @@ namespace lab_1
                     Console.Write("Необходимо указать фамилию человека: ");
                     string newSecondName = Console.ReadLine();
 
-                    bool flagNumberOfChildren = true;
-                    int newNumberOfChildren = 0;
-                    while (flagNumberOfChildren)
-                    {
-                        Console.Write("Необходимо указать количество детей (шт): ");
-                        object newNumberOfChildrenHuman = Console.ReadLine();
-                        try
-                        {
-                            newNumberOfChildren = Convert.ToInt32(newNumberOfChildrenHuman);
-                            if (newNumberOfChildren < 0)
-                            {
-                                Console.WriteLine("Введите корректное число (не может быть отрицательным)");
-                            }
-                            else
-                            {
-                                flagNumberOfChildren = false;
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать количество детей: ");
+                    int newNumberOfChildren= examinationInt(0, 10);
 
                     Console.Write("Необходимо указать город : ");
                     string city = Console.ReadLine();
 
-                    bool flagHeight = true;
-                    int newHeight = 0;
-                    while (flagHeight)
-                    {
-                        Console.Write("Необходимо указать рост человека (см): ");
-                        object newHeightHuman = Console.ReadLine();
-                        try
-                        {
-                            newHeight = Convert.ToInt32(newHeightHuman);
-                            if (newHeight < 1 || newHeight>260)
-                            {
-                                Console.WriteLine("Введите корректное число (от 1 до 260 см)");
-                            }
-                            else
-                            {
-                                flagHeight = false;
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать рост человека: ");
+                    int newHeight= examinationInt(1, 250);
 
-                    human = new Human(newAge,newWeight,newName,newSecondName,newNumberOfChildren,city,newHeight);
+                    human = new Human(newAge, newWeight, newName, newSecondName, newNumberOfChildren, city, newHeight);
                     humans.Add(human);
                     Console.WriteLine($"Добавлен человек со всеми параметрами и ID:{human.humanID} ");
                     Console.WriteLine(human);
@@ -230,7 +147,8 @@ namespace lab_1
                 changeObject();
             }
         }
-        public static void changeObjectField(Human human) { 
+        public static void changeObjectField(Human human)
+        {
             Console.WriteLine("Выберите что хотите изменить:");
             Console.WriteLine("Введите: \n" +
                 "1 - Возраст\n" +
@@ -245,63 +163,21 @@ namespace lab_1
             switch (variant)
             {
                 case "1":
-                    bool flagAge = true;
-                    int newAge = 0;
-                    while (flagAge)
-                    {
-                        Console.Write("Необходимо указать возраст человека (полное количество лет): ");
-                        object newAgeHuman = Console.ReadLine();
-                        try
-                        {
-                            newAge = Convert.ToInt32(newAgeHuman);
-                            if (newAge < 1 || newAge > 150)
-                            {
-                                Console.WriteLine("Введите корректный возраст (от 1 до 150)");
-                            }
-                            else
-                            {
-                                flagAge = false;
-                                human.age = newAge;
-                                Console.WriteLine("Изменение успешно произведено");
-                                Console.WriteLine(human);
-                                changeObjectField(human);
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать возраст человека (полное количество лет): ");
+                    int changeAge= examinationInt(1, 150);
+                    human.age = changeAge;
+                    Console.WriteLine("Изменение успешно произведено");
+                    Console.WriteLine(human);
+                    changeObjectField(human);
                     break;
 
                 case "2":
-                    bool flagWeight = true;
-                    double newWeight = 0;
-                    while (flagWeight)
-                    {
-                        Console.Write("Необходимо указать вес человека (кг.гр): ");
-                        object newWeightHuman = Console.ReadLine();
-                        try
-                        {
-                            newWeight = Convert.ToDouble(newWeightHuman);
-                            if (newWeight < 1 || newWeight > 200)
-                            {
-                                Console.WriteLine("Введите корректный вес (от 1 до 200)");
-                            }
-                            else
-                            {
-                                flagWeight = false;
-                                human.weight = newWeight;
-                                Console.WriteLine("Изменение успешно произведено");
-                                Console.WriteLine(human);
-                                changeObjectField(human);
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать вес человека (кг.гр): ");
+                    double changeWeight = examinationInt(1, 200);
+                    human.weight = changeWeight;
+                    Console.WriteLine("Изменение успешно произведено");
+                    Console.WriteLine(human);
+                    changeObjectField(human);
                     break;
 
                 case "3":
@@ -313,7 +189,7 @@ namespace lab_1
                     changeObjectField(human);
                     break;
 
-                case "4": 
+                case "4":
                     Console.Write($"Введите новую фамилию: ");
                     string secondName = Console.ReadLine();
                     human.secondName = secondName;
@@ -322,39 +198,16 @@ namespace lab_1
                     changeObjectField(human);
                     break;
 
-                case "5": 
-                    Console.Write($"Введите новое количество детей: ");
-                    bool flagNumberOfChildren = true;
-                    int newNumberOfChildren = 0;
-                    while (flagNumberOfChildren)
-                    {
-                        Console.Write("Необходимо указать количество детей (шт): ");
-                        object newNumberOfChildrenHuman = Console.ReadLine();
-                        try
-                        {
-                            newNumberOfChildren = Convert.ToInt32(newNumberOfChildrenHuman);
-                            if (newNumberOfChildren < 0)
-                            {
-                                Console.WriteLine("Введите корректное число (не может быть отрицательным)");
-                            }
-                            else
-                            {
-                                flagNumberOfChildren = false;
-                                human.numberOfChildren = newNumberOfChildren;
-                                Console.WriteLine("Изменение успешно произведено");
-                                Console.WriteLine(human);
-                                changeObjectField(human);
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
-                    Console.WriteLine("количество детей изменено!");
+                case "5":
+                    Console.Write("Необходимо указать количество детей (шт): ");
+                    int changeNumberOfChildren = examinationInt(0, 10);
+                    human.numberOfChildren = changeNumberOfChildren;
+                    Console.WriteLine("Изменение успешно произведено");
+                    Console.WriteLine(human);
+                    changeObjectField(human);
                     break;
 
-                case "6": 
+                case "6":
                     Console.Write($"Введите новое место жительства: ");
                     string city = Console.ReadLine();
                     human.country = city;
@@ -364,47 +217,26 @@ namespace lab_1
                     break;
 
                 case "7":
-                    Console.Write($"Введите новый рост: ");
-                    bool flagHeight = true;
-                    int newHeight = 0;
-                    while (flagHeight)
-                    {
-                        Console.Write("Необходимо указать рост человека (см): ");
-                        object newHeightHuman = Console.ReadLine();
-                        try
-                        {
-                            newHeight = Convert.ToInt32(newHeightHuman);
-                            if (newHeight < 1 || newHeight > 260)
-                            {
-                                Console.WriteLine("Введите корректное число (от 1 до 260 см)");
-                            }
-                            else
-                            {
-                                flagHeight = false;
-                                human.height = newHeight;
-                                Console.WriteLine("Место жительства изменено!");
-                                Console.WriteLine(human);
-                                changeObjectField(human);
-                            }
-                        }
-                        catch
-                        {
-                            Console.WriteLine("неверно введенное значение");
-                        }
-                    }
+                    Console.Write("Необходимо указать рост человека (см): ");
+                    int changeHeight = examinationInt(1, 250);
+                    human.height = changeHeight;
+                    Console.WriteLine("Изменение успешно произведено");
+                    Console.WriteLine(human);
+                    changeObjectField(human);
                     break;
                 case "8":
                     mainMenu();
                     break;
                 default:
                     Console.WriteLine("Неизвестное поле!");
-                    return;
+                    changeObjectField(human);
+                    break;
             }
         }
 
         public static void showList(List<Human> humans)
         {
-            if (humans.Count==0)
+            if (humans.Count == 0)
             {
                 Console.WriteLine("Пустой список обьектов");
                 mainMenu();
@@ -451,7 +283,8 @@ namespace lab_1
                     break;
                 default:
                     Console.WriteLine("Неизвестное поле!");
-                    return;
+                    showAllFieldId(humans);
+                    break;
             }
         }
 
@@ -487,11 +320,12 @@ namespace lab_1
                     break;
                 default:
                     Console.WriteLine("Неизвестное поле!");
+                    printOneField(humans);
                     return;
             }
         }
-        public static void chooseOneField(Human human) 
-        { 
+        public static void chooseOneField(Human human)
+        {
             Console.WriteLine("Выберите что хотите посмотреть:");
             Console.WriteLine("Введите: \n" +
                 "1 - Возраст\n" +
@@ -501,9 +335,9 @@ namespace lab_1
                 "5 - Количество детей\n" +
                 "6 - Место жительства\n" +
                 "7 - Рост\n" +
-                "8 - Id\n"+
+                "8 - Id\n" +
                 "9 - Вернуться на главную\n");
-            string ? variant = Console.ReadLine();
+            string? variant = Console.ReadLine();
             switch (variant)
             {
                 case "1":
@@ -535,8 +369,62 @@ namespace lab_1
                     break;
                 default:
                     Console.WriteLine("Неизвестное поле!");
+                    chooseOneField(human);
                     return;
-            }    
+            }
+        }
+        public static int examinationInt(int minValue, int maxValue)
+        {
+            bool flag = true;
+            int newCount = 0;
+            while (flag)
+            {
+                object newCountHuman = Console.ReadLine();
+                try
+                {
+                    newCount = Convert.ToInt32(newCountHuman);
+                    if (newCount < minValue || newCount > maxValue)
+                    {
+                        Console.WriteLine($"Введите корректные данные (от {minValue} до {maxValue})");
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("неверно введенное значение");
+                }
+            }
+            return newCount;
+        }
+
+        public static double examinationDouble(double minValue, double maxValue)
+        {
+            bool flag = true;
+            double newCount = 0;
+            while (flag)
+            {
+                object newCountHuman = Console.ReadLine();
+                try
+                {
+                    newCount = Convert.ToDouble(newCountHuman);
+                    if (newCount < 1 || newCount > 200)
+                    {
+                        Console.WriteLine($"Введите корректные данные (от {minValue} до {maxValue})");
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("неверно введенное значение");
+                }
+            }
+            return newCount;
         }
     }
 }
