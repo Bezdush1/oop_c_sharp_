@@ -65,7 +65,7 @@ namespace lab_1
         /// </summary>
         /// <param name="name">Имя человека</param>
         /// /// <param name="secondName">Имя человека</param>
-        public Human(string name,string secondName)
+        public Human(string name, string secondName)
         {
             humanID = idGenerator(humanID);
             this.name = name;
@@ -74,8 +74,8 @@ namespace lab_1
 
         public override string ToString()
         {
-           return ($" Возраст: {age} \n Вес: {weight}  кг\n Имя: {name} \n Фамилия: {secondName} \n Количество детей: {numberOfChildren}\n " +
-                $"Страна проживания: {country}\n Рост {height} м\n ID: {humanID}");
+            return ($" Возраст: {age} \n Вес: {weight}  кг\n Имя: {name} \n Фамилия: {secondName} \n Количество детей: {numberOfChildren}\n " +
+                 $"Страна проживания: {country}\n Рост {height} см\n ID: {humanID}");
         }
 
         /// <summary>

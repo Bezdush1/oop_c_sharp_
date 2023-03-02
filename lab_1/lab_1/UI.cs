@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace lab_1
 {
     class UI
     {
         static List<Human> humans = new List<Human>();
+        static Regex regextext = new Regex(@"\p{IsCyrillic}", RegexOptions.IgnorePatternWhitespace);
         public static void bannerInfo()
         {
             Console.WriteLine("Лабораторная работа №1" + "\n" + "Бобков и Жигалов - бригада №13" + "\n" +
@@ -70,7 +71,7 @@ namespace lab_1
 
                 case "2":
                     Console.WriteLine("Введите имя");
-                    string nameHuman = Console.ReadLine();
+                    string nameHuman = examinationString(regextext, human);
                     human = new Human(nameHuman);
                     humans.Add(human);
                     Console.WriteLine($"Добавлен обьект человек с именем:{human.name} и ID:{human.humanID}");
@@ -78,12 +79,14 @@ namespace lab_1
                     break;
 
                 case "3":
-                    Console.WriteLine("Введите имя и фамилию");
-                    string firstName = Console.ReadLine();
-                    string secondName = Console.ReadLine();
+                    Console.WriteLine("Введите имя");
+                    string firstName = examinationString(regextext, human);
+                    Console.WriteLine("Введите фамилию");
+                    string secondName = examinationString(regextext, human);
                     human = new Human(firstName, secondName);
                     humans.Add(human);
-                    Console.WriteLine($"Добавлен обьект человек с именем и фамилией:{human.name} , {human.secondName} и ID:{human.humanID}");
+                    Console.WriteLine($"Добавлен обьект человек с именем и фамилией:{human.name}  " +
+                        $"{human.secondName} и ID:{human.humanID}");
                     mainMenu();
                     break;
 
@@ -91,25 +94,25 @@ namespace lab_1
                     Console.WriteLine("Введите следующие значение:");
 
                     Console.Write("Необходимо указать возраст человека (полное количество лет): ");
-                    int newAge=examinationInt(1,150);
+                    int newAge = examinationInt(1, 150);
 
                     Console.Write("Необходимо указать вес человека (кг.гр): ");
                     double newWeight = examinationDouble(1, 200);
 
                     Console.Write("Необходимо указать имя человека: ");
-                    string newName = Console.ReadLine();
+                    string newName = examinationString(regextext, human);
 
                     Console.Write("Необходимо указать фамилию человека: ");
-                    string newSecondName = Console.ReadLine();
+                    string newSecondName = examinationString(regextext, human);
 
                     Console.Write("Необходимо указать количество детей: ");
-                    int newNumberOfChildren= examinationInt(0, 10);
+                    int newNumberOfChildren = examinationInt(0, 10);
 
                     Console.Write("Необходимо указать город : ");
-                    string city = Console.ReadLine();
+                    string city = examinationString(regextext, human);
 
                     Console.Write("Необходимо указать рост человека: ");
-                    int newHeight= examinationInt(1, 250);
+                    int newHeight = examinationInt(1, 250);
 
                     human = new Human(newAge, newWeight, newName, newSecondName, newNumberOfChildren, city, newHeight);
                     humans.Add(human);
@@ -181,7 +184,7 @@ namespace lab_1
             {
                 case "1":
                     Console.Write("Необходимо указать возраст человека (полное количество лет): ");
-                    int changeAge= examinationInt(1, 150);
+                    int changeAge = examinationInt(1, 150);
                     human.age = changeAge;
                     Console.WriteLine("Изменение успешно произведено");
                     Console.WriteLine(human);
@@ -199,7 +202,7 @@ namespace lab_1
 
                 case "3":
                     Console.Write($"Введите новое имя: ");
-                    string firstName = Console.ReadLine();
+                    string firstName = examinationString(regextext, human);
                     human.name = firstName;
                     Console.WriteLine("Имя изменено!");
                     Console.WriteLine(human);
@@ -208,7 +211,7 @@ namespace lab_1
 
                 case "4":
                     Console.Write($"Введите новую фамилию: ");
-                    string secondName = Console.ReadLine();
+                    string secondName = examinationString(regextext, human);
                     human.secondName = secondName;
                     Console.WriteLine("Фамилия изменена!");
                     Console.WriteLine(human);
@@ -226,7 +229,7 @@ namespace lab_1
 
                 case "6":
                     Console.Write($"Введите новое место жительства: ");
-                    string city = Console.ReadLine();
+                    string city = examinationString(regextext, human);
                     human.country = city;
                     Console.WriteLine("Место жительства изменено!");
                     Console.WriteLine(human);
@@ -241,6 +244,7 @@ namespace lab_1
                     Console.WriteLine(human);
                     changeObjectField(human);
                     break;
+
                 case "8":
                     mainMenu();
                     break;
@@ -443,5 +447,31 @@ namespace lab_1
             }
             return newCount;
         }
+        public static string examinationString(Regex regextext, Human human)
+        {
+            bool flag = true;
+            string stringHuman = "";
+            while (flag)
+            {
+                stringHuman = Console.ReadLine();
+                try
+                {
+                    if (!regextext.IsMatch(stringHuman))
+                    {
+                        Console.WriteLine("Можно только символы Кириллицы");
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("неверно введенное значение");
+                }
+            }
+            return stringHuman;
+        }
+
     }
 }
