@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace lab_2
 {
@@ -28,9 +29,16 @@ namespace lab_2
             int height = (int)Height.Value;
             int numberOfChildren = (int)NumberOfChildren.Value;
             double weight = (double)Weight.Value;
+            if (exeminationString(name)&&exeminationString(secondName)&&exeminationString(country))
+            {
             humans.Add(new Human(age,weight,name,secondName,numberOfChildren,country,height));
             ChangeComboBox1();
-            NumberOfObjects.Text = "Добавлено обьектов: " + Human.NewObjectsCount;
+                NumberOfObjects.Text = "Добавлено обьектов: " + Human.NewObjectsCount;
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения\nИмя, фамилия и город должны быть буквенными!");
+            }
         }
 
         private void CloseProject_Click(object sender, EventArgs e)
@@ -56,6 +64,8 @@ namespace lab_2
         {
             int selected = comboBox1.SelectedIndex;
             if (selected == -1) return;
+            else if (exeminationString(NewName.Text) && exeminationString(SecondName.Text) && exeminationString(Country.Text))
+            {
             humans[selected].Name = NewName.Text;
             humans[selected].SecondName = SecondName.Text;
             humans[selected].Country = Country.Text;
@@ -65,6 +75,12 @@ namespace lab_2
             humans[selected].Weight = (double)Weight.Value;
             label8.Text = humans[selected].ToString();
             ChangeComboBox1();
+            }
+            else
+            {
+                MessageBox.Show("Недопустимое значение имени, фамилии или города");
+                return;
+            }
         }
 
         private void CreateException_Click(object sender, EventArgs e)
@@ -90,6 +106,27 @@ namespace lab_2
             if (selected == -1) return;
             label8.Text = humans[selected].ToString();
             ChangeComboBox1();
+        }
+
+        private bool isString(string input)
+        {
+            string pattern = @"^[A-Za-zА-Яа-я]+$";
+            Match match = Regex.Match(input, pattern);
+            return match.Success;
+        }
+
+        bool exeminationString(string newString)
+        {
+            bool flag = true;
+            if (!(newString == ""))
+            {
+                if (!(isString(newString)))
+                {
+                    flag = false;
+                    MessageBox.Show("Введено некорректное поле");
+                }
+            }
+            return flag;
         }
     }
 }
