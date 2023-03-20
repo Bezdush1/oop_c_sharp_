@@ -1,0 +1,11 @@
+D:\афонин c#\lab_3\lab_3\bin\Debug\lab_3.exe.config
+D:\афонин c#\lab_3\lab_3\bin\Debug\lab_3.exe
+D:\афонин c#\lab_3\lab_3\bin\Debug\lab_3.pdb
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.csproj.AssemblyReference.cache
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.Form1.resources
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.Properties.Resources.resources
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.csproj.GenerateResource.cache
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.csproj.CoreCompileInputs.cache
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.exe
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.pdb
+D:\афонин c#\lab_3\lab_3\obj\Debug\lab_3.Form2.resources
