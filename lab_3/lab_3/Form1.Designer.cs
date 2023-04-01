@@ -30,6 +30,7 @@ namespace lab_3
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.CreateObject = new System.Windows.Forms.Button();
             this.CloseProject = new System.Windows.Forms.Button();
@@ -60,7 +61,10 @@ namespace lab_3
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GenerateObject = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Height)).BeginInit();
@@ -70,102 +74,133 @@ namespace lab_3
             // 
             // CreateObject
             // 
-            this.CreateObject.Location = new System.Drawing.Point(598, 332);
+            this.CreateObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateObject.BackColor = System.Drawing.Color.Cornsilk;
+            this.CreateObject.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateObject.ForeColor = System.Drawing.Color.Red;
+            this.CreateObject.Location = new System.Drawing.Point(917, 219);
             this.CreateObject.Name = "CreateObject";
             this.CreateObject.Size = new System.Drawing.Size(190, 43);
             this.CreateObject.TabIndex = 0;
             this.CreateObject.Text = "Создать обьект";
-            this.CreateObject.UseVisualStyleBackColor = true;
+            this.CreateObject.UseVisualStyleBackColor = false;
             this.CreateObject.Click += new System.EventHandler(this.CreateObject_Click);
             // 
             // CloseProject
             // 
-            this.CloseProject.Location = new System.Drawing.Point(598, 402);
+            this.CloseProject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseProject.BackColor = System.Drawing.Color.Cyan;
+            this.CloseProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseProject.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.CloseProject.Location = new System.Drawing.Point(917, 491);
             this.CloseProject.Name = "CloseProject";
             this.CloseProject.Size = new System.Drawing.Size(190, 36);
             this.CloseProject.TabIndex = 4;
             this.CloseProject.Text = "Закрыть проект";
-            this.CloseProject.UseVisualStyleBackColor = true;
+            this.CloseProject.UseVisualStyleBackColor = false;
             this.CloseProject.Click += new System.EventHandler(this.CloseProject_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.BackColor = System.Drawing.Color.Wheat;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(420, 332);
+            this.comboBox1.Location = new System.Drawing.Point(753, 261);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(102, 24);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Change
             // 
-            this.Change.Location = new System.Drawing.Point(12, 387);
+            this.Change.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Change.BackColor = System.Drawing.Color.Cyan;
+            this.Change.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Change.ForeColor = System.Drawing.Color.Indigo;
+            this.Change.Location = new System.Drawing.Point(12, 467);
             this.Change.Name = "Change";
             this.Change.Size = new System.Drawing.Size(169, 51);
             this.Change.TabIndex = 6;
-            this.Change.Text = "Изменить";
-            this.Change.UseVisualStyleBackColor = true;
+            this.Change.Text = "Изменить объект";
+            this.Change.UseVisualStyleBackColor = false;
             this.Change.Click += new System.EventHandler(this.Change_Click);
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(575, 22);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label1.Location = new System.Drawing.Point(898, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
+            this.label1.Size = new System.Drawing.Size(36, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Имя";
             // 
             // NewName
             // 
-            this.NewName.Location = new System.Drawing.Point(665, 22);
+            this.NewName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewName.Location = new System.Drawing.Point(988, 8);
             this.NewName.Name = "NewName";
             this.NewName.Size = new System.Drawing.Size(100, 22);
             this.NewName.TabIndex = 8;
             // 
             // SecondName
             // 
-            this.SecondName.Location = new System.Drawing.Point(665, 50);
+            this.SecondName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SecondName.Location = new System.Drawing.Point(988, 36);
             this.SecondName.Name = "SecondName";
             this.SecondName.Size = new System.Drawing.Size(100, 22);
             this.SecondName.TabIndex = 10;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(575, 50);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label2.Location = new System.Drawing.Point(898, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 17);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 9;
             this.label2.Text = "Фамилия";
             // 
             // Country
             // 
-            this.Country.Location = new System.Drawing.Point(665, 78);
+            this.Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Country.Location = new System.Drawing.Point(988, 64);
             this.Country.Name = "Country";
             this.Country.Size = new System.Drawing.Size(100, 22);
             this.Country.TabIndex = 12;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(575, 78);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label3.Location = new System.Drawing.Point(898, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 17);
+            this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 11;
             this.label3.Text = "Город";
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(530, 165);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label4.Location = new System.Drawing.Point(839, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 17);
+            this.label4.Size = new System.Drawing.Size(143, 16);
             this.label4.TabIndex = 13;
             this.label4.Text = "Количество детей";
             // 
             // Age
             // 
-            this.Age.Location = new System.Drawing.Point(665, 107);
+            this.Age.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Age.Location = new System.Drawing.Point(988, 93);
             this.Age.Minimum = new decimal(new int[] {
             1,
             0,
@@ -182,7 +217,8 @@ namespace lab_3
             // 
             // Height
             // 
-            this.Height.Location = new System.Drawing.Point(665, 135);
+            this.Height.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Height.Location = new System.Drawing.Point(988, 121);
             this.Height.Maximum = new decimal(new int[] {
             300,
             0,
@@ -204,41 +240,52 @@ namespace lab_3
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(575, 131);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label5.Location = new System.Drawing.Point(898, 117);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.Size = new System.Drawing.Size(42, 16);
             this.label5.TabIndex = 15;
             this.label5.Text = "Рост";
             // 
             // NumberOfChildren
             // 
-            this.NumberOfChildren.Location = new System.Drawing.Point(665, 163);
+            this.NumberOfChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberOfChildren.Location = new System.Drawing.Point(988, 149);
             this.NumberOfChildren.Name = "NumberOfChildren";
             this.NumberOfChildren.Size = new System.Drawing.Size(120, 22);
             this.NumberOfChildren.TabIndex = 18;
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(561, 109);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label6.Location = new System.Drawing.Point(884, 95);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
+            this.label6.Size = new System.Drawing.Size(69, 16);
             this.label6.TabIndex = 17;
             this.label6.Text = "Возраст";
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(575, 198);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label7.Location = new System.Drawing.Point(898, 184);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 17);
+            this.label7.Size = new System.Drawing.Size(34, 16);
             this.label7.TabIndex = 19;
             this.label7.Text = "Вес";
             // 
             // Weight
             // 
-            this.Weight.Location = new System.Drawing.Point(665, 196);
+            this.Weight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Weight.Location = new System.Drawing.Point(988, 182);
             this.Weight.Maximum = new decimal(new int[] {
             200,
             0,
@@ -257,97 +304,186 @@ namespace lab_3
             0,
             0,
             0});
+            this.Weight.ValueChanged += new System.EventHandler(this.Weight_ValueChanged);
             // 
             // NumberOfObjects
             // 
+            this.NumberOfObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberOfObjects.AutoSize = true;
-            this.NumberOfObjects.Location = new System.Drawing.Point(530, 281);
+            this.NumberOfObjects.Font = new System.Drawing.Font("MS Reference Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumberOfObjects.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.NumberOfObjects.Location = new System.Drawing.Point(884, 283);
             this.NumberOfObjects.Name = "NumberOfObjects";
-            this.NumberOfObjects.Size = new System.Drawing.Size(146, 17);
+            this.NumberOfObjects.Size = new System.Drawing.Size(166, 16);
             this.NumberOfObjects.TabIndex = 21;
             this.NumberOfObjects.Text = "Добавлено обьектов";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 35);
+            this.label8.Location = new System.Drawing.Point(13, 64);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 17);
+            this.label8.Size = new System.Drawing.Size(0, 16);
             this.label8.TabIndex = 22;
             // 
             // CreateException
             // 
-            this.CreateException.Location = new System.Drawing.Point(396, 387);
+            this.CreateException.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CreateException.BackColor = System.Drawing.SystemColors.Desktop;
+            this.CreateException.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateException.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.CreateException.Location = new System.Drawing.Point(615, 478);
             this.CreateException.Name = "CreateException";
-            this.CreateException.Size = new System.Drawing.Size(182, 51);
+            this.CreateException.Size = new System.Drawing.Size(119, 49);
             this.CreateException.TabIndex = 23;
             this.CreateException.Text = "Не нажимать";
-            this.CreateException.UseVisualStyleBackColor = true;
+            this.CreateException.UseVisualStyleBackColor = false;
             this.CreateException.Click += new System.EventHandler(this.CreateException_Click);
             // 
             // SeeObject
             // 
-            this.SeeObject.Location = new System.Drawing.Point(206, 387);
+            this.SeeObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SeeObject.BackColor = System.Drawing.Color.Lime;
+            this.SeeObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SeeObject.ForeColor = System.Drawing.Color.Blue;
+            this.SeeObject.Location = new System.Drawing.Point(206, 467);
             this.SeeObject.Name = "SeeObject";
             this.SeeObject.Size = new System.Drawing.Size(169, 51);
             this.SeeObject.TabIndex = 24;
-            this.SeeObject.Text = "Показать";
-            this.SeeObject.UseVisualStyleBackColor = true;
+            this.SeeObject.Text = "Показать объект";
+            this.SeeObject.UseVisualStyleBackColor = false;
             this.SeeObject.Click += new System.EventHandler(this.SeeObject_Click);
             // 
             // deleteObject
             // 
-            this.deleteObject.Location = new System.Drawing.Point(206, 328);
+            this.deleteObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.deleteObject.BackColor = System.Drawing.Color.Gold;
+            this.deleteObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteObject.ForeColor = System.Drawing.Color.Red;
+            this.deleteObject.Location = new System.Drawing.Point(206, 387);
             this.deleteObject.Name = "deleteObject";
             this.deleteObject.Size = new System.Drawing.Size(169, 51);
             this.deleteObject.TabIndex = 25;
             this.deleteObject.Text = "Удалить обьект";
-            this.deleteObject.UseVisualStyleBackColor = true;
+            this.deleteObject.UseVisualStyleBackColor = false;
             this.deleteObject.Click += new System.EventHandler(this.deleteObject_Click);
             // 
             // PrintAll
             // 
-            this.PrintAll.Location = new System.Drawing.Point(12, 332);
+            this.PrintAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PrintAll.BackColor = System.Drawing.Color.DarkOrange;
+            this.PrintAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PrintAll.ForeColor = System.Drawing.Color.DarkBlue;
+            this.PrintAll.Location = new System.Drawing.Point(12, 387);
             this.PrintAll.Name = "PrintAll";
             this.PrintAll.Size = new System.Drawing.Size(169, 51);
             this.PrintAll.TabIndex = 26;
             this.PrintAll.Text = "Вывести все";
-            this.PrintAll.UseVisualStyleBackColor = true;
+            this.PrintAll.UseVisualStyleBackColor = false;
             this.PrintAll.Click += new System.EventHandler(this.PrintAll_Click);
             // 
             // ShowTime
             // 
-            this.ShowTime.Location = new System.Drawing.Point(319, 247);
+            this.ShowTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ShowTime.BackColor = System.Drawing.Color.Crimson;
+            this.ShowTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowTime.ForeColor = System.Drawing.Color.Cornsilk;
+            this.ShowTime.Location = new System.Drawing.Point(546, 120);
             this.ShowTime.Name = "ShowTime";
-            this.ShowTime.Size = new System.Drawing.Size(169, 51);
+            this.ShowTime.Size = new System.Drawing.Size(188, 51);
             this.ShowTime.TabIndex = 27;
             this.ShowTime.Text = "Замер производительности";
-            this.ShowTime.UseVisualStyleBackColor = true;
+            this.ShowTime.UseVisualStyleBackColor = false;
             this.ShowTime.Click += new System.EventHandler(this.ShowTime_Click);
             // 
             // listView1
             // 
+            this.listView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader3});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(329, 26);
+            this.listView1.Location = new System.Drawing.Point(366, 8);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(158, 191);
+            this.listView1.Size = new System.Drawing.Size(489, 107);
             this.listView1.TabIndex = 28;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "последовательная";
+            this.columnHeader1.Text = "Выборка";
+            this.columnHeader1.Width = 108;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Stack";
+            this.columnHeader2.Width = 111;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Array";
+            this.columnHeader3.Width = 110;
+            // 
+            // GenerateObject
+            // 
+            this.GenerateObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GenerateObject.Location = new System.Drawing.Point(917, 338);
+            this.GenerateObject.Name = "GenerateObject";
+            this.GenerateObject.Size = new System.Drawing.Size(187, 45);
+            this.GenerateObject.TabIndex = 29;
+            this.GenerateObject.Text = "Сгенерировать объект";
+            this.GenerateObject.UseVisualStyleBackColor = true;
+            this.GenerateObject.Click += new System.EventHandler(this.GenerateObject_Click);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Myanmar Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label9.Location = new System.Drawing.Point(720, 219);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(161, 27);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Выберите объект";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label10.Font = new System.Drawing.Font("Bell MT", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label10.Location = new System.Drawing.Point(12, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(238, 22);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Информация об объекте";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(917, 391);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(187, 45);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Очистить всё";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ClientSize = new System.Drawing.Size(1119, 539);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.GenerateObject);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.ShowTime);
             this.Controls.Add(this.PrintAll);
@@ -374,7 +510,9 @@ namespace lab_3
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.CloseProject);
             this.Controls.Add(this.CreateObject);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Лабораторная работа№2 Жигалов Бобков";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -419,7 +557,10 @@ namespace lab_3
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button GenerateObject;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }
 

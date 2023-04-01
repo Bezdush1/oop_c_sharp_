@@ -1,0 +1,9 @@
+Library. Name: Британская библиотека, Description: not cool library 1, BooksNumber: 100, ReadingRoomsCount: 10, Type: public, WithWiFi: False, Rating: 2,0
+Library. Name: Российская национальная библиотека, Description: not cool library 2, BooksNumber: 200, ReadingRoomsCount: 20, Type: public, WithWiFi: False, Rating: 2,5
+Library. Name: Национальная библиотека Испании, Description: not cool library 3, BooksNumber: 300, ReadingRoomsCount: 30, Type: public, WithWiFi: False, Rating: 3,0
+Library. Name: Александрийская библиотека, Description: not cool library 4, BooksNumber: 400, ReadingRoomsCount: 40, Type: public, WithWiFi: False, Rating: 3,5
+Library. Name: Баварская государственная библиотека, Description: not cool library 5, BooksNumber: 500, ReadingRoomsCount: 50, Type: public, WithWiFi: False, Rating: 4,0
+Library. Name: Никольская библиотека, Description: cool library 1, BooksNumber: 600, ReadingRoomsCount: 60, Type: public, WithWiFi: True, Rating: 5,0
+Library. Name: Зареченская библиотека, Description: cool library 2, BooksNumber: 700, ReadingRoomsCount: 70, Type: public, WithWiFi: True, Rating: 5,0
+Library. Name: Ртищевская библиотека, Description: cool library 3, BooksNumber: 800, ReadingRoomsCount: 80, Type: public, WithWiFi: True, Rating: 5,0
+

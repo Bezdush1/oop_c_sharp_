@@ -14,22 +14,19 @@ namespace lab_3
 {
     public partial class Form1 : Form
     {
+        string idiotName = "gfgf";
+        Human temp;
         public Form1()
         {
             InitializeComponent();
+            listView1.Items.Add("Последовательная");
+            listView1.Items.Add("Случайная");
 
-            myStack.objectCreated += NewObjectCrated;
-            myStack.objectDelete += NewObjectDelete;
         }
-
-        public static void NewObjectDelete(object sender, EventArgs e)
+        
+        public static void NewObjectClear(object sender, EventArgs e)
         {
-            MessageBox.Show("вы удали обьект");
-        }
-
-        public static void NewObjectCrated(object sender, EventArgs e)
-        {
-            MessageBox.Show("вы создали обьект");
+            MessageBox.Show("вы удалили все обьекты");
         }
 
         private void CreateObject_Click(object sender, EventArgs e)
@@ -43,8 +40,10 @@ namespace lab_3
             double weight = (double)Weight.Value;
             if (exeminationString(name)&&exeminationString(secondName)&&exeminationString(country))
             {
-            myStack.Push(new Human(age, weight, name, secondName, numberOfChildren, country, height));
+               
+                myStack.Push(new Human(age, weight, name, secondName, numberOfChildren, country, height));
             ChangeComboBox1();
+               
                 NumberOfObjects.Text = "Добавлено обьектов: " + Human.ObjectsCount;
             }
             else
@@ -52,6 +51,7 @@ namespace lab_3
                 Exception.MessageBox(0, "Введите корректные значения.Имя, фамилия и город должны быть символами Кириллицы!",
                        "Ошибка!", 0);
             }
+            
         }
 
         private void CloseProject_Click(object sender, EventArgs e)
@@ -163,6 +163,7 @@ namespace lab_3
                 ChangeComboBox1();
                 NumberOfObjects.Text = "Добавлено обьектов: " + Human.ObjectsCount;
                 comboBox1.Text = "";
+                label8.Text = "";
             }
         }
 
@@ -175,13 +176,11 @@ namespace lab_3
         private void ShowTime_Click(object sender, EventArgs e)
         {
             ListViewItem lv1 = new ListViewItem();
-            //ListViewItem lv2 = new ListViewItem();
+            ListViewItem lv2 = new ListViewItem();
             lv1.Text = "Последовательная";
-           // lv2.Text = "Случайная";
-           
-                //listView1.Items[1] = lv1;
-              
-            const int N = 100000;
+            lv2.Text = "Случайная";
+            Random random = new Random();
+            const int N = 10000;
             Human[] array = new Human [N];
 
             for (int i = 0; i < N; i++)
@@ -190,19 +189,130 @@ namespace lab_3
                 array[i] = new Human();
             }
 
-            Stopwatch TimeArray = new Stopwatch();
-            Stopwatch TimeStack = new Stopwatch();
+            Stopwatch TimeArraySuccessively = new Stopwatch();
+            Stopwatch TimeStackSuccessively = new Stopwatch();
 
-            TimeStack.Start();
-           foreach (Human human in myStack.humanStack()) { }
-            TimeStack.Stop();
+            TimeStackSuccessively.Start();
+           foreach (Human human in myStack.humanStack()) 
+            {
+                human.Name = idiotName;
+                temp = human; 
+            }
+            TimeStackSuccessively.Stop();
 
-            TimeArray.Start();
-            foreach (Human human in array) { }
-            TimeArray.Stop();
+            TimeArraySuccessively.Start();
+            foreach (Human human in array) 
+            {
+                human.Name = idiotName;
+                temp = human;
+            }
+            TimeArraySuccessively.Stop();
 
-            lv1.SubItems.Add(TimeArray.ElapsedTicks.ToString());
+            Stopwatch TimeArrayRandom = new Stopwatch();
+            Stopwatch TimeStackRandom = new Stopwatch();
+
+            TimeStackRandom.Start();
+            foreach (Human human in myStack.humanStack())
+            { 
+                temp = myStack.humanStack().ElementAt(random.Next(0, N)); 
+            }
+            TimeStackRandom.Stop();
+
+            TimeArrayRandom.Start();
+            for (int i = 0; i < N; i++)
+            {
+                int index = random.Next(0, N);
+                temp = array[index];
+                array[index].Name = idiotName;
+            }
+            TimeArrayRandom.Stop();
+
+            myStack.Clear();
+            Array.Clear(array, 0, array.Length);
+            lv1.SubItems.Add(TimeStackSuccessively.ElapsedTicks.ToString());
+            lv1.SubItems.Add(TimeArraySuccessively.ElapsedTicks.ToString());
+            lv2.SubItems.Add(TimeStackRandom.ElapsedTicks.ToString());
+            lv2.SubItems.Add(TimeArrayRandom.ElapsedTicks.ToString());
             listView1.Items[0] = lv1;
+            listView1.Items[1] = lv2;
+        }
+
+        private void GenerateObject_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            Random rnd2 = new Random();
+            int N = rnd2.Next(100, 200);
+            for (int i = 0; i < N; i++)
+            {
+                string name = stringNameConvertor();
+                string secondName = stringSecondNameConvertor();
+                string country = stringCountryConvertor();
+                int age = rnd.Next(1, 100);
+                int height = rnd.Next(1, 300);
+                int numberOfChildren = rnd.Next(0, 100);
+                double weight = rnd.Next(1, 200);
+                myStack.Push(new Human(age, weight, name, secondName, numberOfChildren, country, height));
+                ChangeComboBox1();
+                NumberOfObjects.Text = "Добавлено обьектов: " + Human.ObjectsCount;
+
+            }
+        }
+        private string stringNameConvertor()
+        {
+            string[] names = { "Иван", "Пётр", "Мария", "Екатерина", "Александра",
+            "Максим", "Михаил", "Олеся", "Анастасия", "Вероника","Кирилл", "Владимир", "Никита", 
+                "Елизавета", "Татьяна"};
+            Random randomize = new Random();
+            string name = names[randomize.Next(names.Length)];
+            return name;
+        }
+        private string stringSecondNameConvertor()
+        {
+            string[] secondnames = { "Ерёмин", "Петров", "Сидоров", "Котельникова", "Иванова",
+            "Брюзгина", "Ахметова", "Карлин", "Копылов", "Карамышев","Демидова", "Фомина", "Аитова", 
+                "Пронин", "Дырко"};
+            Random randomize = new Random();
+            string secondname = secondnames[randomize.Next(secondnames.Length)];
+            return secondname;
+        }
+        private string stringCountryConvertor()
+        {
+            string[] country = { "Пенза", "Москва", "Санкт-Петербург", "Самара", "Волгоград", "Саратов",
+            "Астрахань","Нижневартовск","Кузнецк","Сыктывкар","Краснодар","Калуга","Омск",
+                "Нижний новгород","Воркута",};
+            Random randomize = new Random();
+            string countrys = country[randomize.Next(country.Length)];
+            return countrys;
+        }
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Weight_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            myStack.Clear();
+            ChangeComboBox1();
+            NumberOfObjects.Text = "Добавлено обьектов: " + Human.ObjectsCount;
+            comboBox1.Text = " ";
+            label8.Text = " ";
+            
+            myStack.objectAllClear += NewObjectClear;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
