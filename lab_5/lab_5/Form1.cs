@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -87,8 +88,7 @@ namespace lab_5
             int selected = TrainsBox.SelectedIndex;
             if (selected == -1) return;
 
-            TrainStation clone = trainStations[selected];
-            clone.Clone();
+            TrainStation clone = trainStations[selected].Clone() as TrainStation;
             trainStations.Add(clone);
 
             ChangeComboBox1();
@@ -124,6 +124,19 @@ namespace lab_5
                 Exception.MessageBox(0, "Недопустимое значение имени, фамилии или города.", "Ошибка!", 0);
                 return;
             }
+        }
+
+        private void ClearAll_Click(object sender, EventArgs e)
+        {
+            trainStations.Clear();
+            TrainStation.TrainStationCount = 0;
+            ChangeComboBox1();
+            NumberOfObjects.Text = "Добавлено обьектов: " + TrainStation.TrainStationCount;
+            TrainsBox.Text = " ";
+            labelTrainStations.Text = " ";
+            TrainsBox.DataSource = null;
+            TrainsBox.Items.Clear();
+            TrainsBox.ResetText();
         }
     }
 }

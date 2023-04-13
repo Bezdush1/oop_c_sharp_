@@ -46,12 +46,7 @@ namespace lab_5
 
        public object Clone()
         {
-            TrainStation trainStations = new TrainStation();
-            trainStations.Name = Name;
-            trainStations.EmployeesInStation = EmployeesInStation;
-            trainStations.NumberOfTrains = NumberOfTrains;
-            trainStations.DirectorName = DirectorName;
-            return trainStations;
+            return new TrainStation(Name,EmployeesInStation,NumberOfTrains,DirectorName);
         }
     }
 }

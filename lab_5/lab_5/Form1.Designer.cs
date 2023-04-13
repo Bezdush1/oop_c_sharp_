@@ -44,6 +44,7 @@
             this.SeeObject = new System.Windows.Forms.Button();
             this.NumberOfObjects = new System.Windows.Forms.Label();
             this.CloneObject = new System.Windows.Forms.Button();
+            this.ClearAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ValueEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValueTrains)).BeginInit();
             this.SuspendLayout();
@@ -207,11 +208,22 @@
             this.CloneObject.UseVisualStyleBackColor = true;
             this.CloneObject.Click += new System.EventHandler(this.CloneObject_Click);
             // 
+            // ClearAll
+            // 
+            this.ClearAll.Location = new System.Drawing.Point(502, 344);
+            this.ClearAll.Name = "ClearAll";
+            this.ClearAll.Size = new System.Drawing.Size(138, 44);
+            this.ClearAll.TabIndex = 16;
+            this.ClearAll.Text = "Удалить все";
+            this.ClearAll.UseVisualStyleBackColor = true;
+            this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ClearAll);
             this.Controls.Add(this.CloneObject);
             this.Controls.Add(this.NumberOfObjects);
             this.Controls.Add(this.SeeObject);
@@ -255,6 +267,7 @@
         private System.Windows.Forms.Button SeeObject;
         private System.Windows.Forms.Label NumberOfObjects;
         private System.Windows.Forms.Button CloneObject;
+        private System.Windows.Forms.Button ClearAll;
     }
 }
 
