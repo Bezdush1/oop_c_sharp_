@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab_5
 {
-    public class TrainStation:ICloneable
+    public class TrainStation:ITrainStation
     {
         /// <summary>
         /// Название станции
@@ -38,15 +38,15 @@ namespace lab_5
 
         public TrainStation() { TrainStationCount++; }
 
-        override public string ToString()
+        public void GetInfo()
         {
-            return $"Name: {Name},\nEmployeesInStation: {EmployeesInStation},\nNumberOfTrains: {NumberOfTrains},\n" +
-                $"DirectorName: {DirectorName}\n";
+           Console.WriteLine($"Name: {Name},\nEmployeesInStation: {EmployeesInStation},\nNumberOfTrains: {NumberOfTrains},\n" +
+                $"DirectorName: {DirectorName}\n") ;
         }
 
-       public object Clone()
+       public ITrainStation Clone()
         {
-            return new TrainStation(Name,EmployeesInStation,NumberOfTrains,DirectorName);
+            return new TrainStation(this.Name,this.EmployeesInStation,this.NumberOfTrains,this.DirectorName);
         }
     }
 }
