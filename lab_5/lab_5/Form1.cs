@@ -138,5 +138,10 @@ namespace lab_5
             TrainsBox.Items.Clear();
             TrainsBox.ResetText();
         }
+
+        private void ButtonGetDirectorInfo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
