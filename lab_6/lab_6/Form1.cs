@@ -107,5 +107,12 @@ namespace lab_6
             await WriteToFile(pattiens, fileTrain);
             MessageBox.Show("Очередь очищена");
         }
+
+        async private void Form1_Load(object sender, EventArgs e)
+        {
+            var pattiens = await ReadFromFile<TrainInfo>(fileTrain);
+            pattiens.Clear();
+            await WriteToFile(pattiens, fileTrain);
+        }
     }
 }
