@@ -9,6 +9,6 @@ namespace lab_5
     public interface ITrainStation
     {
         ITrainStation Clone();
-        void GetInfo();
+        string GetInfo();
     }
 }

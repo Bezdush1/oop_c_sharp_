@@ -38,9 +38,9 @@ namespace lab_5
 
         public TrainStation() { TrainStationCount++; }
 
-        public void GetInfo()
+        public string GetInfo()
         {
-           Console.WriteLine($"Name: {Name},\nEmployeesInStation: {EmployeesInStation},\nNumberOfTrains: {NumberOfTrains},\n" +
+           return ($"Name: {Name},\nEmployeesInStation: {EmployeesInStation},\nNumberOfTrains: {NumberOfTrains},\n" +
                 $"DirectorName: {DirectorName}\n") ;
         }
 

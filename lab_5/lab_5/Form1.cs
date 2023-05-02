@@ -99,7 +99,7 @@ namespace lab_5
         {
             int selected = TrainsBox.SelectedIndex;
             if (selected == -1) return;
-            labelTrainStations.Text = trainStations[selected].ToString();
+            labelTrainStations.Text = trainStations[selected].GetInfo();
             ChangeComboBox1();
         }
 
